@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <h1>Services Registry</h1>
+  
+  <h2 style="text-decoration: underline;">Register Service</h2>
+
+      <div style="margin-left:30px">
+
+      <h3>POST to "/services"</h3>
+
+      <h3>Required Data in Body</h3>
+
+      <ul>
+        <li>name : Service Name</li>
+        <li>category : Service Category</li>
+        <li>version : Service Version</li>
+        <li>description : Description of Service</li>
+        <li>endpoint : URL to the Service</li>
+        <li>heartbeatIntervalms : Expected Heart Beat Interval in Milliseconds</li>
+        <li>documentationURL : URL to the Service Documentation</li>
+      </ul>
+
+      <p>A Successful Registry will Return {id: Unique Id} The required data and the id Should be provided with the heartbeat Request. Registry will purge services with no heartbeat request for longer than 1.5 times heartbeat interval.</p>
+
+      <p>Each Service will be Given and identity made of name category and version. Identity needs to be unique.</p>
+      </div>
+
+  <h2 style="text-decoration: underline;">Search for Service</h2>
+
+    <div style="margin-left:30px">
+
+      <h3>GET to "/services"</h3>
+
+      <p>Search Services with Query Parameters</p>
+
+      <p>To Request a Specific Service Use the identity key: ?identity=service-identity</p>
+
+      <p>Array of Services is Returned</p>
+
+  </div>
+
+  <h2 style="text-decoration: underline;">Request Response</h2>
+  <pre>
+  {
+    status: 'Success' or 'Failed'
+    data: data or null for error,
+    error: error message or null
+  }
+  </pre>
+
+</body>
+</html>
