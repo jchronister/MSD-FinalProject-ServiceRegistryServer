@@ -40,7 +40,8 @@ app.use(function(err, req, res, next) {// eslint-disable-line no-unused-vars
   if (req.app.get("env") === "development") {
     var msg = err.message || err;
   } else {
-    msg = "Server Error";
+    // msg = "Server Error";
+    msg = err.message || err;
   }
 
   res.status(err.status || 500).json(getReturnObject(msg, null));
